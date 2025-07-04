@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-brand-black text-brand-white antialiased;
+}
+/* Adicione no final do seu arquivo src/index.css */
+
+/* Cores customizadas para os ícones */
+.text-spotify { color: #1DB954; } /* Verde do Spotify */
+.text-soundcloud { color: #ff5500; } /* Laranja do SoundCloud */
+.text-bandcamp { color: #629aa9; } /* Azul do Bandcamp */
+.text-instagram { color: #E4405F; } /* Rosa do Instagram */
+.text-whatsapp { color: #25D366; } /* Verde do WhatsApp */
+
+/* Efeito de brilho vermelho no hover */
+.hover\:glow-red:hover {
+  filter: drop-shadow(0 0 10px #b91c1c); /* #b91c1c é o nosso vermelho */
+}
