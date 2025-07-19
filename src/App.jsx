@@ -6,30 +6,76 @@ import Music from './components/Music';
 import Links from './components/Links';
 import Footer from './components/Footer';
 
+// =========================================================
+// COMPONENTE DE FUNDO COM LINHAS MAIS GROSSAS E DISTORCIDAS
+// =========================================================
+const AnimatedBackground = () => {
+  // Formas mais distorcidas para as ondas
+  const pathVariants1 = {
+    initial: { d: "M -20,20 Q 30,50 50,20 T 90,-10 T 130,20" },
+    animate: { d: "M -20,20 Q 30,-20 50,20 T 90,50 T 130,20" },
+  };
+  const pathVariants2 = {
+    initial: { d: "M -20,40 Q 20,10 45,40 T 100,70" },
+    animate: { d: "M -20,40 Q 20,70 45,40 T 100,10" },
+  };
+  const pathVariants3 = {
+    initial: { d: "M -20,60 Q 40,95 60,60 T 100,30 T 140,60" },
+    animate: { d: "M -20,60 Q 40,30 60,60 T 100,95 T 140,60" },
+  };
+  const pathVariants4 = {
+    initial: { d: "M -20,80 Q 25,60 50,80 T 110,110" },
+    animate: { d: "M -20,80 Q 25,110 50,80 T 110,60" },
+  };
+  const pathVariants5 = {
+    initial: { d: "M -20,100 Q 35,130 55,100 T 115,70" },
+    animate: { d: "M -20,100 Q 35,70 55,100 T 115,130" },
+  };
+  const pathVariants6 = {
+    initial: { d: "M -20,0 Q 15,-30 40,0 T 95,30" },
+    animate: { d: "M -20,0 Q 15,30 40,0 T 95,-30" },
+  };
+  
+  // Velocidade mantida, movimento contínuo
+  const waveTransition = {
+    duration: 25,
+    ease: "linear",
+    repeat: Infinity,
+    repeatType: "mirror",
+  };
+
+  return (
+    <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
+      <svg
+          className="w-full h-full opacity-25" // Opacidade sutil
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid slice"
+          // EFEITO DE BRILHO MAIS INTENSO
+          style={{ filter: 'drop-shadow(0 0 12px #b91c1c)' }}
+      >
+        {/* LINHAS MAIS GROSSAS */}
+        <motion.path variants={pathVariants1} initial="initial" animate="animate" transition={waveTransition} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+        <motion.path variants={pathVariants2} initial="initial" animate="animate" transition={{...waveTransition, delay: 2}} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+        <motion.path variants={pathVariants3} initial="initial" animate="animate" transition={{...waveTransition, delay: 4}} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+        <motion.path variants={pathVariants4} initial="initial" animate="animate" transition={{...waveTransition, delay: 6}} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+        <motion.path variants={pathVariants5} initial="initial" animate="animate" transition={{...waveTransition, delay: 8}} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+        <motion.path variants={pathVariants6} initial="initial" animate="animate" transition={{...waveTransition, delay: 10}} stroke="#b91c1c" strokeWidth="0.2" fill="none" />
+      </svg>
+    </div>
+  );
+};
+
+
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-black">
-      {/* Penas de Pavão Decorativas */}
-      <motion.img
-        src="/images/peacock-left.png"
-        alt=""
-        className="hidden md:block fixed top-0 left-0 w-1/4 max-w-[250px] opacity-30 pointer-events-none z-0"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-      />
-      <motion.img
-        src="/images/peacock-right.png"
-        alt=""
-        className="hidden md:block fixed top-0 right-0 w-1/3 max-w-[350px] opacity-30 pointer-events-none z-0"
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-      />
       
+      <AnimatedBackground />
+
       <main className="relative z-10 flex flex-col items-center">
         <Hero />
-        <div className="px-4">
+        <div className="px-4 w-full">
           <About />
           <Music />
           <Links />
@@ -39,4 +85,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

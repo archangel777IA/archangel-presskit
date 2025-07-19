@@ -13,12 +13,17 @@ export default {
       },
       fontFamily: {
         'sans': ['Poppins', 'sans-serif'],
+'witch mystery': ['witch mystery', 'serif'] 
       },
       backgroundImage: {
         'artist-photo': "url('/images/photo-1.jpg')",
         'soundcloud-profile': "url('/images/soundcloud-profile.png')",
         'bandcamp-releases': "url('/images/bandcamp-releases.png')",
         'spotify-profile': "url('/images/spotify-profile.png')",
+        // ===============================================
+        // NOVA LINHA ADICIONADA AQUI
+        // ===============================================
+        'psy-texture': "url('/images/psychedelic-texture.jpg')",
       }
     },
   },

@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { FaInstagram, FaWhatsapp, FaSpotify, FaSoundcloud, FaBandcamp } from 'react-icons/fa';
 
 const SocialIcon = ({ icon, link, colorClass, index }) => (
-  <motion.a href={link} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1, duration: 0.5 }} whileHover={{ scale: 1.2, transition: { duration: 0.2 } }} whileTap={{ scale: 0.9 }} 
-  // Tamanho do ícone ajustado para telas diferentes
-  className={`text-4xl sm:text-5xl md:text-6xl transition-all duration-300 hover:glow-red ${colorClass}`}>
+  <motion.a href={link} target="_blank" rel="noopener noreferrer" 
+  initial={{ opacity: 0, y: 20 }}
+  // Animação individual dos ícones mantida para um efeito cascata
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }} // Delay ajustado para seguir as seções anteriores
+  whileHover={{ scale: 1.2, transition: { duration: 0.2 } }} whileTap={{ scale: 0.9 }} className={`text-4xl sm:text-5xl md:text-6xl transition-all duration-300 hover:glow-red ${colorClass}`}>
     {icon}
   </motion.a>
 );
@@ -20,8 +23,13 @@ const Links = () => {
   ];
 
   return (
-    <motion.section id="contact" className="w-full max-w-5xl py-10 md:py-20 text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-      {/* Tamanho da fonte ajustado */}
+    <motion.section 
+      id="contact" 
+      className="w-full max-w-5xl py-10 md:py-20 text-center mx-auto" 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 0.6 }}
+    >
       <h2 className="mb-12 text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider uppercase">
         Open for Labels, Collabs and Bookings
       </h2>

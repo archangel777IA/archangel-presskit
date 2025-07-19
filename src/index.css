@@ -1,3 +1,12 @@
+/* Adicione no início do seu arquivo src/index.css */
+
+@font-face {
+  font-family: 'Witch Mystery';
+  src: url('/fonts/Witch Mystery.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 @tailwind base;
