@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// 1. IMPORTAR A IMAGEM COMO UMA VARIÁVEL
 import mainBanner from '../assets/main-banner.png';
 
 const Hero = () => {
@@ -12,9 +11,9 @@ const Hero = () => {
       transition={{ duration: 1.5, ease: "easeInOut" }}
     >
       <img 
-        // 2. USAR A VARIÁVEL DA IMAGEM
         src={mainBanner}
         alt="Banner principal Arch'Angel" 
+        // A imagem já se comporta de forma responsiva por padrão
         className="w-full h-auto object-cover"
       />
     </motion.section>

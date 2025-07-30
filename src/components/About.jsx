@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGoogleDrive, FaGlobe } from 'react-icons/fa';
-// =========================================================
-// LINHA DE IMPORTAÇÃO DA FOTO RESTAURADA
-// =========================================================
 import artistPhoto from '../assets/photo-1.jpg';
 
-// Componentes internos (sem alterações)
 const WavingFlag = () => ( <motion.span className="inline-block" animate={{ rotateY: [0, 360], }} transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "loop", repeatDelay: 3.5 }}>🇧🇷</motion.span> );
 const ptContent = { title: "O PROJETO", p1: `Nascido em 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> é o ritual sonoro do artista e DJ paulistano Ícaro Archanjo. Uma fusão experimental que <strong class="font-semibold text-white">aguçam os sentidos sensoriais e os extra-sensoriais</strong>, mergulhando em Sound Healing e ritmos xamânicos, com muitas referências da Zenon Rec., para criar uma experiência auditiva profunda e única.`, p2: `Cada track é uma chave, cuidadosamente forjada com batidas pulsantes e códigos subconscientes. A missão não é apenas ouvir, mas <strong class="font-semibold text-white">sentir</strong>. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo introspecção e uma profunda reconexão.`, p3: `Mais que música, Arch'Angel é um convite à evolução.` };
-const enContent = { title: "THE PROJECT", p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based artist and DJ Ícaro Archanjo. An experimental fusion that <strong class="font-semibold text-white">ignites sensory and extra-sensory perceptions</strong>, diving into Sound Healing and shamanic rhythms, with deep influences from Zenon Rec., to create a profound and unique auditory journey.`, p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but to <strong class="font-semibold text-white">feel</strong>. It's a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting introspection and a deep reconnection.`, p3: `More que music, Arch'Angel is an invitation to evolve.` };
+const enContent = { title: "THE PROJECT", p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based artist and DJ Ícaro Archanjo. An experimental fusion that <strong class="font-semibold text-white">ignites sensory and extra-sensory perceptions</strong>, diving into Sound Healing and shamanic rhythms, with deep influences from Zenon Rec., to create a profound and unique auditory journey.`, p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but to <strong class="font-semibold text-white">feel</strong>. It's a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting introspection and a deep reconnection.`, p3: `More than music, Arch'Angel is an invitation to evolve.` };
 
 const About = () => {
   const [language, setLanguage] = useState('pt');
@@ -26,23 +22,22 @@ const About = () => {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
         
         <div className="relative md:col-span-2 h-full">
-            {/* ========================================================= */}
-            {/* USO DA IMAGEM CORRIGIDO */}
-            {/* ========================================================= */}
+            {/* Altura ajustada para telas de celular */}
             <div className="h-96 md:h-full bg-cover bg-center bg-no-repeat rounded-lg" style={{ backgroundImage: `url(${artistPhoto})` }}></div>
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-red-900/40 rounded-lg pointer-events-none"></div>
             <div className="absolute inset-0 rounded-lg shadow-[inset_0_0px_50px_rgba(0,0,0,0.8)]"></div>
         </div>
 
         <motion.div 
-            className="md:col-span-3 relative p-8 border border-gray-800 rounded-2xl bg-psy-texture bg-cover bg-center overflow-hidden"
+            className="md:col-span-3 relative p-6 md:p-8 border border-gray-800 rounded-2xl bg-psy-texture bg-cover bg-center overflow-hidden"
             animate={{ boxShadow: [ "0 0 15px 0px rgba(185, 28, 28, 0.2)", "0 0 30px 5px rgba(185, 28, 28, 0.4)", "0 0 15px 0px rgba(185, 28, 28, 0.2)", ], }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", }}
         >
             <div className="absolute inset-0 bg-black/70 rounded-2xl"></div>
             
             <div className="relative z-10 text-left">
-              <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-wider uppercase font-elegance">
+              {/* Tamanho da fonte ajustado para telas menores */}
+              <h2 className="mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider uppercase font-elegance">
                 {content.title} <WavingFlag />
               </h2>
               
