@@ -11,6 +11,13 @@ const Gallery = () => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 1.5 }}
     >
+      {/* ========================================================= */}
+      {/* TÍTULO "EM AÇÃO" ADICIONADO AQUI */}
+      {/* ========================================================= */}
+      <h2 className="mb-12 text-center text-3xl sm:text-4xl font-bold tracking-wider uppercase">
+        EM AÇÃO
+      </h2>
+
       {/* Caixa animada */}
       <motion.div
         className="relative w-full p-2 sm:p-3 border border-gray-800 rounded-2xl bg-black/50 overflow-hidden"
@@ -27,18 +34,9 @@ const Gallery = () => {
           ease: "easeInOut",
         }}
       >
-        {/* ========================================================= */}
-        {/* ALTERAÇÕES APLICADAS AQUI */}
-        {/* ========================================================= */}
-        
-        {/* O overlay escuro foi REMOVIDO. */}
-
-        {/* A imagem agora é um elemento <img> dentro da caixa. */}
         <img
           src="/images/artist-live.jpg"
           alt="Arch'Angel live performance"
-          // bg-contain garante que a imagem inteira apareça, sem cortes.
-          // rounded-lg para manter a estética.
           className="w-full h-full object-contain rounded-lg"
         />
 
