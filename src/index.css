@@ -1,11 +1,11 @@
 /* ========================================================= */
-/* 1. TODAS as importações devem vir primeiro. */
+/* 1. Importações de fontes externas */
 /* ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 
 /* ========================================================= */
-/* 2. Em seguida, as definições do Tailwind. */
+/* 2. Definições base do Tailwind CSS */
 /* ========================================================= */
 @tailwind base;
 @tailwind components;
@@ -13,7 +13,7 @@
 
 
 /* ========================================================= */
-/* 3. Depois, as definições de fontes customizadas. */
+/* 3. Definição da sua fonte customizada */
 /* ========================================================= */
 @font-face {
   font-family: 'The New Elegance';
@@ -24,7 +24,7 @@
 
 
 /* ========================================================= */
-/* 4. E por último, o resto do seu CSS. */
+/* 4. Estilos globais e classes de utilidade customizadas */
 /* ========================================================= */
 body {
   @apply bg-brand-black text-brand-white antialiased;

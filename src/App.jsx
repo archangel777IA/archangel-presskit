@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Hero from './components/Hero';
 import About from './components/About';
-import Gallery from './components/Gallery'; // 1. IMPORTAR O NOVO COMPONENTE
+import Gallery from './components/Gallery';
 import Music from './components/Music';
 import Links from './components/Links';
 import Footer from './components/Footer';
@@ -30,19 +30,25 @@ function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-black">
       <AnimatedBackground />
-      <main className="relative z-10 flex flex-col items-center">
+
+      {/* ========================================================= */}
+      {/* CONTAINER PRINCIPAL AGORA TEM A ANIMAÇÃO DE FADE-IN */}
+      {/* ========================================================= */}
+      <motion.main 
+        className="relative z-10 flex flex-col items-center"
+        initial={{ opacity: 0 }} // Começa invisível
+        animate={{ opacity: 1 }} // Anima para visível
+        transition={{ duration: 2, ease: "easeInOut" }} // Duração de 2 segundos para um efeito suave
+      >
         <Hero />
         <div className="px-4 w-full">
           <About />
-          {/* =============================================== */}
-          {/* 2. ADICIONAR A SEÇÃO DE GALERIA AQUI */}
-          {/* =============================================== */}
           <Gallery />
           <Music />
           <Links />
         </div>
         <Footer />
-      </main>
+      </motion.main>
     </div>
   );
 }

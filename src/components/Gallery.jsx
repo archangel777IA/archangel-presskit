@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+// 1. IMPORTAR A IMAGEM COMO UMA VARIÁVEL
+import artistLive from '../assets/artist-live.jpg';
 
 const Gallery = () => {
   return (
@@ -11,14 +13,9 @@ const Gallery = () => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 1.5 }}
     >
-      {/* ========================================================= */}
-      {/* TÍTULO "EM AÇÃO" ADICIONADO AQUI */}
-      {/* ========================================================= */}
       <h2 className="mb-12 text-center text-3xl sm:text-4xl font-bold tracking-wider uppercase">
         EM AÇÃO
       </h2>
-
-      {/* Caixa animada */}
       <motion.div
         className="relative w-full p-2 sm:p-3 border border-gray-800 rounded-2xl bg-black/50 overflow-hidden"
         animate={{
@@ -35,11 +32,11 @@ const Gallery = () => {
         }}
       >
         <img
-          src="/images/artist-live.jpg"
+          // 2. USAR A VARIÁVEL DA IMAGEM
+          src={artistLive}
           alt="Arch'Angel live performance"
           className="w-full h-full object-contain rounded-lg"
         />
-
       </motion.div>
     </motion.section>
   );
