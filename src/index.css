@@ -1,31 +1,43 @@
-/* Adicione no início do seu arquivo src/index.css */
-
-@font-face {
-  font-family: 'Witch Mystery';
-  src: url('/fonts/Witch Mystery.otf') format('otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* ========================================================= */
+/* 1. TODAS as importações devem vir primeiro. */
+/* ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+
+/* ========================================================= */
+/* 2. Em seguida, as definições do Tailwind. */
+/* ========================================================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+/* ========================================================= */
+/* 3. Depois, as definições de fontes customizadas. */
+/* ========================================================= */
+@font-face {
+  font-family: 'The New Elegance';
+  src: url('/fonts/TheNewElegance.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ========================================================= */
+/* 4. E por último, o resto do seu CSS. */
+/* ========================================================= */
 body {
   @apply bg-brand-black text-brand-white antialiased;
 }
-/* Adicione no final do seu arquivo src/index.css */
 
 /* Cores customizadas para os ícones */
-.text-spotify { color: #1DB954; } /* Verde do Spotify */
-.text-soundcloud { color: #ff5500; } /* Laranja do SoundCloud */
-.text-bandcamp { color: #629aa9; } /* Azul do Bandcamp */
-.text-instagram { color: #E4405F; } /* Rosa do Instagram */
-.text-whatsapp { color: #25D366; } /* Verde do WhatsApp */
+.text-spotify { color: #1DB954; }
+.text-soundcloud { color: #ff5500; }
+.text-bandcamp { color: #629aa9; }
+.text-instagram { color: #E4405F; }
+.text-whatsapp { color: #25D366; }
 
 /* Efeito de brilho vermelho no hover */
 .hover\:glow-red:hover {
-  filter: drop-shadow(0 0 10px #b91c1c); /* #b91c1c é o nosso vermelho */
+  filter: drop-shadow(0 0 10px #b91c1c);
 }
