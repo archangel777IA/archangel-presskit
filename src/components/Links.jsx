@@ -1,14 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaInstagram, FaWhatsapp, FaSpotify, FaSoundcloud, FaBandcamp } from 'react-icons/fa';
+import { FaInstagram, FaSpotify, FaSoundcloud, FaBandcamp } from 'react-icons/fa';
 
 const SocialIcon = ({ icon, link, colorClass, index }) => (
-  <motion.a href={link} target="_blank" rel="noopener noreferrer" 
-  initial={{ opacity: 0, y: 20 }}
-  // Animação individual dos ícones mantida para um efeito cascata
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }} // Delay ajustado para seguir as seções anteriores
-  whileHover={{ scale: 1.2, transition: { duration: 0.2 } }} whileTap={{ scale: 0.9 }} className={`text-4xl sm:text-5xl md:text-6xl transition-all duration-300 hover:glow-red ${colorClass}`}>
+  <motion.a href={link} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }} whileHover={{ scale: 1.2, transition: { duration: 0.2 } }} whileTap={{ scale: 0.9 }} className={`text-4xl sm:text-5xl md:text-6xl transition-all duration-300 hover:glow-red ${colorClass}`}>
     {icon}
   </motion.a>
 );
@@ -19,7 +14,6 @@ const Links = () => {
     { icon: <FaSoundcloud />, link: "https://soundcloud.com/archangeloficial/tracks", colorClass: "text-soundcloud" },
     { icon: <FaBandcamp />, link: "https://archangelll333.bandcamp.com", colorClass: "text-bandcamp" },
     { icon: <FaInstagram />, link: "https://www.instagram.com/arch.angel.oficial/", colorClass: "text-instagram" },
-    { icon: <FaWhatsapp />, link: "https://wa.me/5511997429410", colorClass: "text-whatsapp" },
   ];
 
   return (
@@ -30,7 +24,7 @@ const Links = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, delay: 0.6 }}
     >
-      <h2 className="mb-12 text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider uppercase">
+      <h2 className="mb-12 text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider uppercase font-elegance">
         Open for Labels, Collabs and Bookings
       </h2>
       <div className="flex justify-center items-center space-x-6 sm:space-x-8 md:space-x-12">

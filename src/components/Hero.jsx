@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import mainBanner from '../assets/main-banner.png';
 
 const Hero = () => {
   return (
@@ -10,13 +9,19 @@ const Hero = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
     >
+      {/* 
+        =========================================================
+        A CORREÇÃO ESTÁ AQUI.
+        Certifique-se de que o nome do seu arquivo na pasta 
+        'public/images' é EXATAMENTE 'main-banner.png'.
+        Se for '.jpg' ou outro nome, altere a linha abaixo.
+        =========================================================
+      */}
       <img 
-        src={mainBanner}
-        alt="Banner principal Arch'Angel" 
-        // A imagem já se comporta de forma responsiva por padrão
-        className="w-full h-auto object-cover"
-      />
-    </motion.section>
+  src="/images/banner.png" // <--- ALTERADO AQUI
+  alt="Banner principal Arch'Angel" 
+  className="w-full h-auto object-cover"
+/>    </motion.section>
   );
 };
 

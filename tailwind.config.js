@@ -16,7 +16,7 @@ export default {
 'witch mystery': ['witch mystery', 'serif'] 
       },
       backgroundImage: {
-        'artist-photo': "url('/images/photo-1.jpg')",
+        'artist-photo': "url('/images/artist-photo.jpg')",
         'soundcloud-profile': "url('/images/soundcloud-profile.png')",
         'bandcamp-releases': "url('/images/bandcamp-releases.png')",
         'spotify-profile': "url('/images/spotify-profile.png')",
