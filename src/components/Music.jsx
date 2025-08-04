@@ -56,16 +56,20 @@ const Music = () => {
         <div className="relative z-20">
           <PlayerSection 
             title="SoundCloud" 
-            platformLink="https://soundcloud.com/archangeloficial/sacramentum-145-f/s-phj0PxNGxFe" 
+            platformLink="https://soundcloud.com/archangeloficial"
             platformName="SoundCloud"
             linkColorClass="hover:text-[#ff5500]"
             titleColorClass="text-[#ff5500]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(255,85,0,0.5)]"
           >
             <iframe 
-                title="SoundCloud Player - sacramentum 145 F"
-                width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2105021469%3Fsecret_token%3Ds-phj0PxNGxFe&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                title="SoundCloud Player - OBSIDIAN 140"
+                width="100%" 
+                height="300" 
+                scrolling="no" 
+                frameBorder="no" 
+                allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2141486007&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
             ></iframe>
           </PlayerSection>
 
@@ -77,13 +81,7 @@ const Music = () => {
             titleColorClass="text-[#1DB954]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(29,185,84,0.5)]"
           >
-            <iframe 
-                title="Spotify Player" 
-                style={{ borderRadius: '12px' }} 
-                src="https://open.spotify.com/embed/artist/4DOKilPHgnYuXqq5VOVFSc?utm_source=generator&theme=0" 
-                width="100%" height="152" frameBorder="0" allowFullScreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            ></iframe>
+            <iframe title="Spotify Player" style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/artist/4DOKilPHgnYuXqq5VOVFSc?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
           </PlayerSection>
 
           <PlayerSection 
@@ -94,12 +92,7 @@ const Music = () => {
             titleColorClass="text-[#629aa9]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(98,154,169,0.5)]"
           >
-            <iframe 
-                title="Bandcamp Player" 
-                style={{ border: 0, width: '100%', height: '120px' }} 
-                src="https://bandcamp.com/EmbeddedPlayer/track=3424674687/size=large/bgcol=212121/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" 
-                seamless
-            ></iframe>
+            <iframe title="Bandcamp Player" style={{ border: 0, width: '100%', height: '120px' }} src="https://bandcamp.com/EmbeddedPlayer/track=3424674687/size=large/bgcol=212121/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
           </PlayerSection>
         </div>
       </motion.div>
