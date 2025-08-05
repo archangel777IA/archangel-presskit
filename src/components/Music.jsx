@@ -34,7 +34,7 @@ const Music = () => {
       </h2>
 
       <motion.div
-        className="relative w-full p-4 sm:p-6 border border-gray-800 rounded-2xl bg-psy-texture bg-cover bg-center overflow-hidden"
+        className="relative w-full p-4 sm:p-6 border border-gray-800 rounded-2xl overflow-hidden"
         animate={{
           boxShadow: [
             "0 0 15px 0px rgba(185, 28, 28, 0.2)",
@@ -51,12 +51,15 @@ const Music = () => {
         <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
           <source src="/box-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        {/* ========================================================= */}
+        {/* A ÚNICA ALTERAÇÃO ESTÁ NESTA LINHA: OVERLAY REMOVIDO */}
+        {/* ========================================================= */}
+        <div className="absolute inset-0 bg-transparent z-10"></div>
         
         <div className="relative z-20">
           <PlayerSection 
             title="SoundCloud" 
-            platformLink="https://soundcloud.com/archangeloficial"
+            platformLink="https://soundcloud.com/archangeloficial/sacramentum-145-f/s-phj0PxNGxFe" 
             platformName="SoundCloud"
             linkColorClass="hover:text-[#ff5500]"
             titleColorClass="text-[#ff5500]"

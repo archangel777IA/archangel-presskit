@@ -39,13 +39,17 @@ const About = () => {
               {/* ========================================================= */}
               {/* A ÚNICA ALTERAÇÃO ESTÁ NESTA LINHA */}
               {/* ========================================================= */}
-              <div className="absolute inset-0 bg-black/50 rounded-2xl z-10"></div>
+              <div className="absolute inset-0 bg-black/60 rounded-2xl z-10"></div>
               
               <div className="relative z-20 text-left flex flex-col flex-grow">
                 <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-wider uppercase font-elegance">
                   {content.title} <WavingFlag />
                 </h2>
-                <div className="space-y-6 text-gray-300 font-light text-base md:text-lg leading-relaxed flex-grow" dangerouslySetInnerHTML={{ __html: `<p>${content.p1}</p><p>${content.p2}</p><p>${content.p3}</p>` }}></div>
+                <div 
+                  className="space-y-6 font-bold text-red-200 text-base md:text-lg leading-relaxed flex-grow"
+                  style={{ textShadow: '0 0 8px rgba(254, 202, 202, 0.5)' }}
+                  dangerouslySetInnerHTML={{ __html: `<p>${content.p1}</p><p>${content.p2}</p><p>${content.p3}</p>` }}
+                ></div>
                 <div className="flex flex-wrap items-center gap-4 mt-10">
                   <motion.a href="https://drive.google.com/drive/folders/1uAH9GudciJm-CYi7QoG7lyd09oqo8x25?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-x-3 px-6 py-3 text-sm font-semibold border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800/50 hover:text-white hover:border-red-800 transition-all duration-300" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <FaGoogleDrive className="text-xl" />

@@ -10,12 +10,15 @@ const Gallery = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, delay: 0.8 }}
     >
-      <h2 className="mb-12 sm:mb-16 text-center text-3xl sm:text-4xl font-bold tracking-wider uppercase">
+      <h2 className="mb-12 sm:mb-16 text-center text-3xl sm:text-4xl font-bold tracking-wider uppercase font-elegance">
         Galeria do Artista
       </h2>
 
       <motion.div
-        className="relative w-full p-4 border border-gray-800 rounded-2xl bg-psy-texture bg-cover bg-center overflow-hidden"
+        // =========================================================
+        // A ÚNICA ALTERAÇÃO ESTÁ NESTA LINHA: PADDING AUMENTADO
+        // =========================================================
+        className="relative w-full p-16 border border-gray-800 rounded-2xl bg-psy-texture bg-cover bg-center overflow-hidden"
         animate={{
           boxShadow: [
             "0 0 15px 0px rgba(185, 28, 28, 0.2)",
@@ -29,9 +32,12 @@ const Gallery = () => {
           ease: "easeInOut",
         }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src="/box-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-transparent z-10"></div>
         
-        <div className="relative z-10">
+        <div className="relative z-20">
           <img 
             src="/images/performance-photo.jpg" 
             alt="Arch'Angel performance ao vivo"

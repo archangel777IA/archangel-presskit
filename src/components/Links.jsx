@@ -32,7 +32,10 @@ const Links = () => {
           <SocialIcon key={index} icon={item.icon} link={item.link} colorClass={item.colorClass} index={index} />
         ))}
       </div>
-      <p className="mt-8 text-gray-400 text-sm tracking-widest uppercase">
+      {/* ========================================================= */}
+      {/* A ÚNICA ALTERAÇÃO ESTÁ NESTA LINHA */}
+      {/* ========================================================= */}
+      <p className="mt-8 text-gray-300 text-lg italic tracking-widest uppercase">
         Follow me
       </p>
     </motion.section>
