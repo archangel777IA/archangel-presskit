@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Adicionando useState e useEffect
 import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa';
 import Hero from './components/Hero';
 import About from './components/About';
 import Links from './components/Links';
@@ -8,7 +7,25 @@ import Music from './components/Music';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 
+// Hook customizado para detectar o tamanho da tela
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile;
+};
+
 const AnimatedBackground = () => {
+  const isMobile = useIsMobile(); // Usando o hook para saber se é mobile
+
   const commonTransition = {
     duration: 25,
     ease: "easeInOut",
@@ -16,7 +33,7 @@ const AnimatedBackground = () => {
     repeatType: "mirror",
   };
 
-  const lines = [
+  const allLines = [
     { variants: { initial: { d: "M -100,150 C 400,-150 800,450 2020,150" }, animate: { d: "M -100,150 C 400,450 800,-150 2020,150" } }, delay: 0, duration: 25 },
     { variants: { initial: { d: "M -100,300 C 500,900 600,-300 2020,300" }, animate: { d: "M -100,300 C 500,-300 600,900 2020,300" } }, delay: 2, duration: 12.5 },
     { variants: { initial: { d: "M -100,450 C 350,-225 750,900 2020,450" }, animate: { d: "M -100,450 C 350,900 750,-225 2020,450" } }, delay: 4, duration: 35 },
@@ -30,12 +47,18 @@ const AnimatedBackground = () => {
     { variants: { initial: { d: "M -100,1650 C 450,1200 750,2100 2020,1650" }, animate: { d: "M -100,1650 C 450,2100 750,1200 2020,1650" } }, delay: 20, duration: 36 },
   ];
 
+  // Filtramos as linhas para a versão mobile
+  const mobileLines = [allLines[2], allLines[5], allLines[8]]; // Linhas 3, 6 e 9 (índice 2, 5, 8)
+
+  // Escolhemos qual array de linhas usar com base no tamanho da tela
+  const linesToRender = isMobile ? mobileLines : allLines;
+
   return (
     <div className="fixed inset-0 z-0 overflow-hidden">
       <svg className="absolute w-full h-full" preserveAspectRatio="none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         <defs><filter id="neon-glow"><feGaussianBlur stdDeviation="30" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
         <g filter="url(#neon-glow)" opacity="0.8">
-          {lines.map((line, index) => (
+          {linesToRender.map((line, index) => (
             <motion.path
               key={index}
               variants={line.variants}
@@ -53,22 +76,6 @@ const AnimatedBackground = () => {
   );
 };
 
-const FloatingWhatsApp = () => (
-  <motion.a
-    href="https://wa.me/5511997429410"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg"
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ delay: 2, duration: 0.5, ease: "easeOut" }}
-    whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(37, 211, 102, 0.8)" }}
-    whileTap={{ scale: 0.9 }}
-  >
-    <FaWhatsapp className="text-3xl sm:text-4xl" />
-  </motion.a>
-);
-
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-black">
@@ -83,7 +90,6 @@ function App() {
         </div>
         <Footer />
       </main>
-      <FloatingWhatsApp />
     </div>
   );
 }
