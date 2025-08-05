@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 import Hero from './components/Hero';
@@ -8,9 +8,22 @@ import Music from './components/Music';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 
-// =========================================================
-// CÓDIGO DO FUNDO ANIMADO 100% PRESERVADO
-// =========================================================
+// Hook customizado para detectar se a tela é de um dispositivo móvel
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile;
+};
+
 const AnimatedBackground = () => {
   const commonTransition = {
     duration: 25,
@@ -56,26 +69,19 @@ const AnimatedBackground = () => {
   );
 };
 
-const FloatingWhatsApp = () => (
-  <motion.a
-    href="https://wa.me/5511997429410"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg"
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ delay: 2, duration: 0.5, ease: "easeOut" }}
-    whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(37, 211, 102, 0.8)" }}
-    whileTap={{ scale: 0.9 }}
-  >
-    <FaWhatsapp className="text-3xl sm:text-4xl" />
-  </motion.a>
-);
+const FloatingWhatsApp = () => ( <motion.a href="https://wa.me/5511997429410" target="_blank" rel="noopener noreferrer" className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 2, duration: 0.5, ease: "easeOut" }} whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(37, 211, 102, 0.8)" }} whileTap={{ scale: 0.9 }}><FaWhatsapp className="text-3xl sm:text-4xl" /></motion.a> );
 
 function App() {
+  const isMobile = useIsMobile(); // Chamando o hook aqui
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-black">
-      <AnimatedBackground />
+      
+      {/* ========================================================= */}
+      {/* A ÚNICA ALTERAÇÃO ESTÁ AQUI: RENDERIZAÇÃO CONDICIONAL */}
+      {/* ========================================================= */}
+      {!isMobile && <AnimatedBackground />}
+
       <main className="relative z-10 flex flex-col items-center">
         <Hero />
         <div className="px-4 w-full">
