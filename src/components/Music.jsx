@@ -82,24 +82,24 @@ const Music = ({ isMobile }) => {
             titleColorClass="text-[#ff5500]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(255,85,0,0.5)]"
           >
+            {/* ========================================================= */}
+            {/* PLAYERS DO SOUNDCLOUD ALTERADOS PARA O TIPO "VISUAL" */}
+            {/* ========================================================= */}
             <div className="space-y-4">
               <iframe 
                   title="SoundCloud Player - OBSIDIAN 140D"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149821906&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  loading="lazy">
+                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149821906&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
               </iframe>
               <iframe 
                   title="SoundCloud Player - ESÚ (remake)"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149827084&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  loading="lazy">
+                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149827084&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
               </iframe>
               <iframe 
                   title="SoundCloud Player - Internall Buttons"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973392043&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  loading="lazy">
+                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973392043&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
               </iframe>
             </div>
           </PlayerSection>
