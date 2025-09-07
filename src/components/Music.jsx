@@ -50,7 +50,7 @@ const Music = ({ isMobile }) => {
 
       <motion.div
         className="relative w-full p-4 sm:p-6 border border-gray-800 rounded-2xl overflow-hidden"
-        animate={!isMobile && isInView ? {
+        animate={!isMobile ? {
           boxShadow: [
             "0 0 15px 0px rgba(185, 28, 28, 0.2)",
             "0 0 30px 5px rgba(185, 28, 28, 0.4)",
@@ -82,24 +82,30 @@ const Music = ({ isMobile }) => {
             titleColorClass="text-[#ff5500]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(255,85,0,0.5)]"
           >
-            {/* ========================================================= */}
-            {/* PLAYERS DO SOUNDCLOUD ALTERADOS PARA O TIPO "VISUAL" */}
-            {/* ========================================================= */}
             <div className="space-y-4">
+              {/* ========================================================= */}
+              {/* PLAYER 1 ATUALIZADO */}
+              {/* ========================================================= */}
               <iframe 
-                  title="SoundCloud Player - OBSIDIAN 140D"
-                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149821906&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                  title="SoundCloud Player - OBSIDIAN 140"
+                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2159867694%3Fsecret_token%3Ds-1VRc0bepSpJ&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
               </iframe>
+              
+              {/* Player 2: ESÚ (remake) */}
               <iframe 
                   title="SoundCloud Player - ESÚ (remake)"
-                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149827084&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149827084&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+                  loading="lazy">
               </iframe>
+
+              {/* Player 3: Internall Buttons */}
               <iframe 
                   title="SoundCloud Player - Internall Buttons"
-                  width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973392043&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973392043&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+                  loading="lazy">
               </iframe>
             </div>
           </PlayerSection>

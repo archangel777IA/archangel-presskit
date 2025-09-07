@@ -1,6 +1,8 @@
+// src/components/Links.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaInstagram, FaSpotify, FaSoundcloud, FaBandcamp } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const SocialIcon = ({ icon, link, colorClass, index }) => (
   <motion.a href={link} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }} whileHover={{ scale: 1.2, transition: { duration: 0.2 } }} whileTap={{ scale: 0.9 }} className={`text-4xl sm:text-5xl md:text-6xl transition-all duration-300 hover:glow-red ${colorClass}`}>
@@ -8,7 +10,7 @@ const SocialIcon = ({ icon, link, colorClass, index }) => (
   </motion.a>
 );
 
-const Links = () => {
+const Links = ({ content }) => {
   const socialLinks = [
     { icon: <FaSpotify />, link: "https://open.spotify.com/artist/4DOKilPHgnYuXqq5VOVFSc?si=1F4F6TKOSH2NMpbRDV0_Fw", colorClass: "text-spotify" },
     { icon: <FaSoundcloud />, link: "https://soundcloud.com/archangeloficial/tracks", colorClass: "text-soundcloud" },
@@ -25,21 +27,22 @@ const Links = () => {
       transition={{ duration: 1.5, delay: 0.6 }}
     >
       <h2 className="mb-12 text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider uppercase font-elegance">
-        Open for Labels, Collabs and Bookings
+        {content.title}
       </h2>
       <div className="flex justify-center items-center space-x-6 sm:space-x-8 md:space-x-12">
         {socialLinks.map((item, index) => (
           <SocialIcon key={index} icon={item.icon} link={item.link} colorClass={item.colorClass} index={index} />
         ))}
       </div>
-      {/* ========================================================= */}
-      {/* A ÚNICA ALTERAÇÃO ESTÁ NESTA LINHA */}
-      {/* ========================================================= */}
       <p className="mt-8 text-gray-300 text-lg italic tracking-widest uppercase">
-        Follow me
+        {content.follow}
       </p>
     </motion.section>
   );
+};
+
+Links.propTypes = {
+  content: PropTypes.object.isRequired,
 };
 
 export default Links;

@@ -2,15 +2,23 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
 
+import galleryImg1 from '/images/gallery-1.jpg';
+import galleryImg3 from '/images/gallery-3.png';
+import galleryImg4 from '/images/gallery-4.png';
+
 const Gallery = ({ isMobile }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
+
+  const images = [galleryImg1, galleryImg3, galleryImg4];
+  const videoSrc = '/videos/performance.mp4';
 
   return (
     <motion.section 
       id="gallery" 
       ref={ref}
-      className="w-full max-w-4xl py-10 md:py-20 flex flex-col items-center px-4 mx-auto"
+      // Aumentamos o max-w- para a galeria ocupar mais espaço
+      className="w-full max-w-6xl py-10 md:py-20 flex flex-col items-center px-4 mx-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, delay: 0.8 }}
@@ -20,8 +28,8 @@ const Gallery = ({ isMobile }) => {
       </h2>
 
       <motion.div
-        className="relative w-full p-16 border border-gray-800 rounded-2xl overflow-hidden"
-        animate={!isMobile && isInView ? {
+        className="relative w-full p-4 sm:p-6 border border-gray-800 rounded-2xl overflow-hidden"
+        animate={!isMobile ? {
           boxShadow: [
             "0 0 15px 0px rgba(185, 28, 28, 0.2)",
             "0 0 30px 5px rgba(185, 28, 28, 0.4)",
@@ -42,14 +50,35 @@ const Gallery = ({ isMobile }) => {
           <div className="absolute inset-0 bg-psy-texture bg-cover bg-center z-0"></div>
         )}
         
-        <div className="absolute inset-0 bg-transparent z-10"></div>
+        <div className="absolute inset-0 bg-black/80 z-10"></div>
         
-        <div className="relative z-20">
-          <img 
-            src="/images/performance-photo.jpg" 
-            alt="Arch'Angel performance ao vivo"
-            className="w-full h-auto object-cover rounded-lg"
-          />
+        <div className="relative z-20 flex flex-col gap-4">
+          <div className="grid grid-cols-3 gap-4">
+            {images.map((src, index) => (
+              <div key={index} className="aspect-square overflow-hidden rounded-lg">
+                <img 
+                  src={src} 
+                  alt={`Imagem da galeria do artista ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* ========================================================= */}
+          {/* A ALTERAÇÃO ESTÁ NA TAG DE VÍDEO ABAIXO */}
+          {/* ========================================================= */}
+          <div className="w-full aspect-video overflow-hidden rounded-lg bg-black">
+            <video 
+              // Atributo 'controls' adicionado
+              controls
+              // loop e muted removidos para dar controle ao usuário
+              playsInline 
+              src={videoSrc} 
+              // object-contain garante que o vídeo inteiro seja visível
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
       </motion.div>
     </motion.section>
