@@ -48,15 +48,12 @@ const About = ({ isMobile, language, setLanguage, content }) => {
               animate={!isMobile && isInView ? { boxShadow: [ "0 0 15px 0px rgba(185, 28, 28, 0.2)", "0 0 30px 5px rgba(185, 28, 28, 0.4)", "0 0 15px 0px rgba(185, 28, 28, 0.2)", ], } : { boxShadow: "0 0 15px 0px rgba(185, 28, 28, 0.2)" }}
               transition={{ duration: 2.2, repeat: isInView ? Infinity : 0, ease: "easeInOut", }}
           >
-              {!isMobile ? (
-                <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
-                  <source src="/box-background.mp4" type="video/mp4" />
-                </video>
-              ) : (
-                <div className="absolute inset-0 bg-psy-texture bg-cover bg-center z-0"></div>
-              )}
+              <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+                <source src="/box-background.mp4" type="video/mp4" />
+              </video>
               
-              <div className="absolute inset-0 bg-black/60 rounded-2xl z-10"></div>
+              <div className="absolute inset-0 bg-transparent rounded-2xl z-10"></div>
+              
               <div className="relative z-20 text-left flex flex-col flex-grow">
                 <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-wider uppercase font-elegance">
                   {content.about.title} <WavingFlag />

@@ -9,7 +9,6 @@ import Gallery from './components/Gallery';
 import Continuation from './components/Continuation';
 import Footer from './components/Footer';
 
-// Hook para detectar se é um dispositivo móvel
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -48,7 +47,12 @@ const FloatingWhatsApp = () => ( <motion.a href="https://wa.me/5511997429410" ta
 
 const siteContent = {
   pt: {
-    about: { title: "O PROJETO", p1: `Nascido em 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> é o ritual sonoro do artista e DJ paulistano Ícaro Archanjo. Uma fusão experimental que <strong class="font-semibold text-white">aguçam os sentidos sensoriais e os extra-sensoriais</strong>, mergulhando em Sound Healing e ritmos xamânicos, com muitas referências da Zenon Rec., para criar uma experiência auditiva profunda e única.`, p2: `Cada track é uma chave, cuidadosamente forjada com batidas pulsantes e códigos subconscientes. A missão não é apenas ouvir, mas <strong class="font-semibold text-white">sentir</strong>. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo introspecção e uma profunda reconexão.`, p3: `Mais que música, Arch'Angel é um convite à evolução.` },
+    about: {
+      title: "O PROJETO",
+      p1: `Nascido em 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> é o ritual sonoro do produtor e DJ paulistano Ícaro Archanjo de lima. Uma fusão experimental que aguçam os sentidos sensoriais e os extra-sensoriais, mergulhando em Sound Healing e ritmos xamânicos, com muitas referências da Zenon Rec.,criando uma experiência auditiva profunda , única e introspectiva.`,
+      p2: `Cada track é uma chave, cuidadosamente forjada com batidas pulsantes e códigos subconscientes. A missão não é apenas ouvir, tambem é sentir. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo uma profunda reconexão interna.`,
+      p3: `não é apenas batida, Arch'Angel tem significado vivo. Em suas performances, é possível notar isso.`
+    },
     quote: { text: `"Quero te tocar da forma mais profunda e sincera, usando essa ferramenta maravilhosa que é a música"`, author: `- Ícaro Archanjo de Lima` },
     links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
     music: { title: "Ouça", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
@@ -57,7 +61,12 @@ const siteContent = {
     footer: { quote: `"A música tem o poder de unir, e portanto, de mudar toda uma nação que ainda vive na ilusão da separação"`, author: `- Ícaro Archanjo de Lima` }
   },
   en: {
-    about: { title: "THE PROJECT", p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based artist and DJ Ícaro Archanjo. An experimental fusion that <strong class="font-semibold text-white">ignites sensory and extra-sensory perceptions</strong>, diving into Sound Healing and shamanic rhythms, with deep influences from Zenon Rec., to create a profound and unique auditory journey.`, p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but to <strong class="font-semibold text-white">feel</strong>. It's a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting introspection and a deep reconnection.`, p3: `More than music, Arch'Angel is an invitation to evolve.` },
+    about: {
+      title: "THE PROJECT",
+      p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based producer and DJ Ícaro Archanjo de Lima. An experimental fusion that sharpens sensory and extra-sensory perceptions, diving into Sound Healing and shamanic rhythms, with many references from Zenon Rec., creating a deep, unique, and introspective auditory experience.`,
+      p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but also to feel. It is a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting a deep internal reconnection.`,
+      p3: `It's not just a beat; Arch'Angel has living meaning. In his performances, this becomes noticeable.`
+    },
     quote: { text: `"I want to touch you in the deepest and most sincere way, using this wonderful tool that is music"`, author: `- Ícaro Archanjo de Lima` },
     links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
     music: { title: "Listen", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },

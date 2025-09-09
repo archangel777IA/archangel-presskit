@@ -22,7 +22,7 @@ const PlayerSection = ({ title, platformLink, platformName, linkColorClass, titl
 );
 
 PlayerSection.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   platformLink: PropTypes.string.isRequired,
   platformName: PropTypes.string.isRequired,
   linkColorClass: PropTypes.string.isRequired,
@@ -31,7 +31,7 @@ PlayerSection.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const Music = ({ isMobile }) => {
+const Music = ({ isMobile, content }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
@@ -45,12 +45,12 @@ const Music = ({ isMobile }) => {
       transition={{ duration: 1.5, delay: 0.4 }}
     >
       <h2 className="mb-12 sm:mb-16 text-center text-3xl sm:text-4xl font-bold tracking-wider uppercase font-elegance">
-        Ouça
+        {content.title}
       </h2>
 
       <motion.div
         className="relative w-full p-4 sm:p-6 border border-gray-800 rounded-2xl overflow-hidden"
-        animate={!isMobile ? {
+        animate={!isMobile && isInView ? {
           boxShadow: [
             "0 0 15px 0px rgba(185, 28, 28, 0.2)",
             "0 0 30px 5px rgba(185, 28, 28, 0.4)",
@@ -63,74 +63,64 @@ const Music = ({ isMobile }) => {
           ease: "easeInOut",
         }}
       >
-        {!isMobile ? (
-          <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
-            <source src="/box-background.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          <div className="absolute inset-0 bg-psy-texture bg-cover bg-center z-0"></div>
-        )}
-        
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src="/box-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-transparent z-10"></div>
         
         <div className="relative z-20">
           <PlayerSection 
-            title="SoundCloud" 
+            title={content.soundcloud}
             platformLink="https://soundcloud.com/archangeloficial"
             platformName="SoundCloud"
             linkColorClass="hover:text-[#ff5500]"
             titleColorClass="text-[#ff5500]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(255,85,0,0.5)]"
           >
-            <div className="space-y-4">
-              {/* ========================================================= */}
-              {/* PLAYER 1 ATUALIZADO */}
-              {/* ========================================================= */}
-              <iframe 
-                  title="SoundCloud Player - Obsidian"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2165103435&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
-              </iframe>
-              
-              {/* ========================================================= */}
-              {/* PLAYER 2 ATUALIZADO */}
-              {/* ========================================================= */}
-              <iframe 
-                  title="SoundCloud Player - Dissonant Resonance"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973077675&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
-              </iframe>
-
-              {/* Player 3: Internall Buttons */}
-              <iframe 
-                  title="SoundCloud Player - Internall Buttons"
-                  width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973392043&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  loading="lazy">
-              </iframe>
-            </div>
+            <iframe 
+                title="SoundCloud Player - Obsidian"
+                width="100%" 
+                height="300" 
+                scrolling="no" 
+                frameBorder="no" 
+                allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2165103435&color=%23141414&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            ></iframe>
           </PlayerSection>
 
           <PlayerSection 
-            title="Spotify" 
+            title={content.spotify}
             platformLink="https://open.spotify.com/artist/4DOKilPHgnYuXqq5VOVFSc" 
             platformName="Spotify"
             linkColorClass="hover:text-[#1DB954]"
-            titleColorClass="text-[#1DB954]"
+            titleColorClass="text-[#1DB9a9]"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(29,185,84,0.5)]"
           >
-            <iframe title="Spotify Player" style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/artist/4DOKilPHgnYuXqq5VOVFSc?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe title="Spotify Player" data-testid="embed-iframe" style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/artist/4DOKilPHgnYuXqq5VOVFSc?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </PlayerSection>
 
           <PlayerSection 
-            title="Bandcamp" 
-            platformLink="https://archangelll333.bandcamp.com/track/work-light-original-mix-135-d" 
+            title={
+              <>
+                Escutar em .WAV no <span className="text-[#629aa9]">Bandcamp</span>
+              </>
+            }
+            platformLink="https://archangelll333.bandcamp.com"
             platformName="Bandcamp"
             linkColorClass="hover:text-[#629aa9]"
-            titleColorClass="text-[#629aa9]"
+            titleColorClass="text-white"
             linkGlowClass="hover:shadow-[0_0_15px_rgba(98,154,169,0.5)]"
           >
-            <iframe title="Bandcamp Player" style={{ border: 0, width: '100%', height: '120px' }} src="https://bandcamp.com/EmbeddedPlayer/track=3424674687/size=large/bgcol=212121/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy"></iframe>
+            <div className="space-y-4">
+              <iframe title="Bandcamp Player - Work Light" style={{ border: 0, width: '100%', height: '120px' }} src="https://bandcamp.com/EmbeddedPlayer/track=3424674687/size=large/bgcol=212121/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless loading="lazy"></iframe>
+              <iframe 
+                title="Bandcamp Player - Obsidian"
+                style={{ border: 0, width: '100%', height: '120px' }} 
+                src="https://bandcamp.com/EmbeddedPlayer/track=2539249662/size=large/bgcol=212121/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" 
+                seamless
+                loading="lazy">
+              </iframe>
+            </div>
           </PlayerSection>
         </div>
       </motion.div>
@@ -140,6 +130,7 @@ const Music = ({ isMobile }) => {
 
 Music.propTypes = {
   isMobile: PropTypes.bool.isRequired,
+  content: PropTypes.object.isRequired,
 };
 
 export default Music;
