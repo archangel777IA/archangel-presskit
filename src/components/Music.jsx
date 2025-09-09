@@ -87,17 +87,18 @@ const Music = ({ isMobile }) => {
               {/* PLAYER 1 ATUALIZADO */}
               {/* ========================================================= */}
               <iframe 
-                  title="SoundCloud Player - OBSIDIAN 140"
+                  title="SoundCloud Player - Obsidian"
                   width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2159867694%3Fsecret_token%3Ds-1VRc0bepSpJ&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2165103435&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
               </iframe>
               
-              {/* Player 2: ESÚ (remake) */}
+              {/* ========================================================= */}
+              {/* PLAYER 2 ATUALIZADO */}
+              {/* ========================================================= */}
               <iframe 
-                  title="SoundCloud Player - ESÚ (remake)"
+                  title="SoundCloud Player - Dissonant Resonance"
                   width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2149827084&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  loading="lazy">
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1973077675&color=%23141414&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true">
               </iframe>
 
               {/* Player 3: Internall Buttons */}
