@@ -86,58 +86,150 @@ const FloatingWhatsApp = () => (
   </motion.a>
 );
 
-const siteContent = {
-  pt: {
-    about: {
-      title: "O PROJETO",
-      p1: `Nascido em 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> é o ritual sonoro do produtor e DJ paulistano Ícaro Archanjo de lima. Uma fusão experimental que aguçam os sentidos sensoriais e os extra-sensoriais, mergulhando em Sound Healing e ritmos xamânicos, com muitas referências da Zenon Rec.,criando uma experiência auditiva profunda , única e introspectiva.`,
-      p2: `Cada track é uma chave, cuidadosamente forjada com batidas pulsantes e códigos subconscientes. A missão não é apenas ouvir, tambem é sentir. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo uma profunda reconexão interna.`,
-      p3: `não é apenas batida, Arch'Angel tem significado vivo. Em suas performances, é possível notar isso.`
-    },
-    quote: { text: `"Quero te tocar da forma mais profunda e sincera, usando essa ferramenta maravilhosa que é a música"`, author: `- Ícaro Archanjo de Lima` },
-    links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
-    music: { title: "Ouça", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
-    gallery: { title: "Galeria do Artista" },
-    footer: { quote: `"A música tem o poder de unir, e portanto, de mudar toda uma nação que ainda vive na ilusão da separação"`, author: `- Ícaro Archanjo de Lima` }
+/** ✅ NAV FINO ABAIXO DO CABEÇALHO (Hero) */
+const SectionNav = () => {
+  const PRESSKIT_URL =
+    "https://drive.google.com/drive/folders/1uAH9GudciJm-CYi7QoG7lyd09oqo8x25?usp=sharing";
+
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const items = [
+    { id: 'presskit', label: 'Material Presskit', type: 'link', href: PRESSKIT_URL },
+    { id: 'services-audio', label: 'Serviços de Áudio', type: 'scroll' },
+    { id: 'social', label: 'Redes Sociais', type: 'scroll' },
+    { id: 'streaming', label: 'Streaming', type: 'scroll' },
+    { id: 'gallery', label: 'Galeria do Artista', type: 'scroll' },
+    { id: 'aulas', label: 'Aulas', type: 'scroll' },
+  ];
+
+  return (
+    <div className="w-full sticky top-0 z-40">
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="mt-0 border border-gray-800 rounded-xl bg-black/70 backdrop-blur-md">
+          <div className="flex flex-wrap items-center justify-center gap-2 py-2 px-2">
+            {items.map((it) => {
+              if (it.type === 'link') {
+                return (
+                  <a
+                    key={it.id}
+                    href={it.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 text-[11px] sm:text-xs font-semibold text-gray-200 border border-gray-700 rounded-lg hover:bg-white/10 transition"
+                  >
+                    {it.label}
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={it.id}
+                  onClick={() => scrollToId(it.id)}
+                  className="px-3 py-1 text-[11px] sm:text-xs font-semibold text-gray-200 border border-gray-700 rounded-lg hover:bg-white/10 transition"
+                >
+                  {it.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ✅ Bio atual (mantida intacta)
+const basePt = {
+  about: {
+    title: "O PROJETO",
+    p1: `ARCH'ANGEL é o ritual sonoro do Artista e DJ brasileiro ,Ícaro Archanjo. Som experimental que aguça os sentidos sensoriais e os extra-sensoriais, despertando algo que só quem se permite, sente. uma experiência auditiva profunda , única e introspectiva. Caos organizado e dançante, que te leva nas profundezas de ti mesmo.`,
+    p2: `Cada track é uma chave, cuidadosamente forjada para transmitir códigos subconscientes. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo uma profunda reconexão interna.`,
+    p3: `Arch'Angel tem significado vivo. Sinta a mensagem pulsar dentro de ti.`,
+    bottomLine: `Quero te tocar da forma mais sincera e honesta possível, usando essa ferramenta maravilhosa que é a música`,
+    bottomAuthor: `- Icaro Archanjo de lima`
   },
-  en: {
-    about: {
-      title: "THE PROJECT",
-      p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based producer and DJ Ícaro Archanjo de Lima. An experimental fusion that sharpens sensory and extra-sensory perceptions, diving into Sound Healing and shamanic rhythms, with many references from Zenon Rec., creating a deep, unique, and introspective auditory experience.`,
-      p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but also to feel. It is a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting a deep internal reconnection.`,
-      p3: `It's not just a beat; Arch'Angel has living meaning. In his performances, this becomes noticeable.`
-    },
-    quote: { text: `"I want to touch you in the deepest and most sincere way, using this wonderful tool that is music"`, author: `- Ícaro Archanjo de Lima` },
-    links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
-    music: { title: "Listen", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
-    gallery: { title: "Artist Gallery" },
-    footer: { quote: `"Music has the power to unite, and therefore, to change an entire nation that still lives in the illusion of separation"`, author: `- Ícaro Archanjo de Lima` }
-  }
+  quote: { text: `"Quero te tocar da forma mais profunda e sincera, usando essa ferramenta maravilhosa que é a música"`, author: `- Ícaro Archanjo de Lima` },
+  links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
+  music: { title: "Ouça", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
+  gallery: { title: "Galeria do Artista" },
+  footer: { quote: `"A música tem o poder de unir, e portanto, de mudar toda uma nação que ainda vive na ilusão da separação"`, author: `- Ícaro Archanjo de Lima` }
+};
+
+const baseEn = {
+  about: {
+    title: "THE PROJECT",
+    p1: `Born in 2022, <strong class="font-semibold text-white">ARCH'ANGEL</strong> is the sonic ritual of São Paulo-based producer and DJ Ícaro Archanjo de Lima. An experimental fusion that sharpens sensory and extra-sensory perceptions, diving into Sound Healing and shamanic rhythms, with many references from Zenon Rec., creating a deep, unique, and introspective auditory experience.`,
+    p2: `Each track is a key, carefully forged with pulsating beats and subconscious codes. The mission is not just to listen, but also to feel. It is a hypnotic immersion designed to guide the mind through the "veil of Maya," promoting a deep internal reconnection.`,
+    p3: `It's not just a beat; Arch'Angel has living meaning. In his performances, this becomes noticeable.`
+  },
+  quote: { text: `"I want to touch you in the deepest and most sincere way, using this wonderful tool that is music"`, author: `- Ícaro Archanjo de Lima` },
+  links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
+  music: { title: "Listen", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
+  gallery: { title: "Artist Gallery" },
+  footer: { quote: `"Music has the power to unite, and therefore, to change an entire nation that still lives in the illusion of separation"`, author: `- Ícaro Archanjo de Lima` }
+};
+
+const siteContent = {
+  pt: basePt,
+  en: baseEn,
+  es: baseEn,
+  fr: baseEn,
+  de: baseEn,
+  it: baseEn,
+  nl: baseEn,
+  ru: baseEn,
+  ja: baseEn,
+  ko: baseEn,
+  zh: baseEn,
+  ar: baseEn,
+  tr: baseEn,
 };
 
 function App() {
   const isMobile = useIsMobile();
   const [language, setLanguage] = useState('pt');
 
+  const currentContent = siteContent[language] || siteContent.pt;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-black">
       {!isMobile && <AnimatedBackground />}
+
       <main className="relative z-10 flex flex-col items-center">
-        <Hero />
+        <Hero language={language} content={currentContent} />
+
+        {/* ✅ Rodapé fino de sessões (abaixo do cabeçalho) */}
+        <SectionNav />
+
         <div className="px-4 w-full">
           <About
             isMobile={isMobile}
             language={language}
             setLanguage={setLanguage}
-            content={siteContent[language]}
+            content={currentContent}
           />
-          <Links content={siteContent[language].links} />
-          <Music isMobile={isMobile} content={siteContent[language].music} />
-          <Gallery isMobile={isMobile} content={siteContent[language].gallery} />
-          {/* REMOVIDO: Continuation (era a caixa de cima) */}
+
+          <div id="social" className="scroll-mt-24">
+            <Links content={currentContent.links} />
+          </div>
+
+          <div id="streaming" className="scroll-mt-24">
+            <Music isMobile={isMobile} content={currentContent.music} />
+          </div>
+
+          <div id="gallery" className="scroll-mt-24">
+            <Gallery isMobile={isMobile} content={currentContent.gallery} />
+          </div>
         </div>
-        <Footer content={siteContent[language].footer} />
+
+        <Footer content={currentContent.footer} />
       </main>
+
       <FloatingWhatsApp />
     </div>
   );

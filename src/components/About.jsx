@@ -1,9 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaGoogleDrive, FaGlobe, FaWhatsapp } from 'react-icons/fa';
+import { FaGoogleDrive, FaGlobe } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-
-import audioVideo from '../videos/audio.mp4';
 
 const WavingFlag = () => {
   const ref = useRef(null);
@@ -36,8 +34,9 @@ const SoundArchitectureSection = ({ isMobile }) => {
 
   return (
     <motion.section
+      id="services-audio"
       ref={ref}
-      className="w-full max-w-6xl mx-auto px-4 pb-16 sm:pb-24"
+      className="w-full max-w-6xl mx-auto px-4 pb-16 sm:pb-24 scroll-mt-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2 }}
@@ -57,12 +56,19 @@ const SoundArchitectureSection = ({ isMobile }) => {
         }
         transition={{ duration: 2.2, repeat: isInView ? Infinity : 0, ease: 'easeInOut' }}
       >
-        {/* VIDEO MP4 DE FUNDO (ARQUITETURA DE SOM) - MANTIDO */}
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0">
-          <source src={audioVideo} type="video/mp4" />
+        {/* VIDEO DE FUNDO DA ARQUITETURA DE SOM (MANTIDO) */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/audio.mp4" type="video/mp4" />
         </video>
 
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        <div className="absolute inset-0 bg-black/35 z-10"></div>
 
         <div className="relative z-20">
           <h3 className="text-2xl sm:text-3xl font-bold uppercase font-elegance mb-6 sm:mb-8">
@@ -70,8 +76,7 @@ const SoundArchitectureSection = ({ isMobile }) => {
           </h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8">
-            {/* ESQUERDA */}
-            <div className="p-4 sm:p-6 border border-gray-800 rounded-xl bg-black/40">
+            <div className="p-4 sm:p-6 border border-gray-800 rounded-xl bg-black/40 backdrop-blur-[2px]">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
                 <div>
                   <h4 className="text-lg sm:text-xl font-semibold text-red-200">
@@ -82,7 +87,6 @@ const SoundArchitectureSection = ({ isMobile }) => {
                   </p>
                 </div>
 
-                {/* BOTAO PEQUENO COM CONTORNO NEON VERDE PULSANTE */}
                 <motion.a
                   href={mixLink}
                   target="_blank"
@@ -100,27 +104,27 @@ const SoundArchitectureSection = ({ isMobile }) => {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <FaWhatsapp />
                   Fale conosco
                 </motion.a>
               </div>
 
+              {/* ✅ ÂNCORA "Aulas" (para o botão Aulas do menu) */}
+              <div id="aulas" className="scroll-mt-24" />
+
               <ul className="space-y-2 text-gray-100 leading-relaxed text-sm sm:text-base">
                 <li>• Mixagem e masterização profissionais</li>
-                <li>• Masters para streaming e pista</li>
-                <li>• Correção de balanceamento + intenção musical</li>
+                <li>• Correção de balanceamento + imagem estéreo</li>
                 <li>• Profundidade, espaço e narrativa sonora</li>
                 <li>• Ajustes focados em emoção e impacto</li>
                 <li>• Preservação de dinâmica emocional</li>
-                <li>• Estética sonora consistente com o conceito do projeto</li>
+                <li>• Estética sonora coerente com o projeto</li>
                 <li>• Aulas de produção musical</li>
                 <li>• Aulas de mixagem e masterização avançada</li>
               </ul>
             </div>
 
-            {/* DIREITA */}
-            <div className="p-4 sm:p-6 border border-gray-800 rounded-xl bg-black/40">
-              <h4 className="text-lg sm:text-xl font-semibold text-red-200 mb-4">
+            <div className="p-4 sm:p-6 border border-gray-800 rounded-xl bg-black/40 backdrop-blur-[2px]">
+              <h4 className="text-lg sm:text-xl font-semibold text-red-200 mb-2">
                 Direção Musical e Aplicações
               </h4>
 
@@ -167,9 +171,101 @@ const About = ({ isMobile, language, setLanguage, content }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
+  const [langOpen, setLangOpen] = useState(false);
+  const [menuPos, setMenuPos] = useState({ top: 0, left: 0, width: 220 });
+  const langBtnRef = useRef(null);
+
+  const openMenu = () => {
+    if (!langBtnRef.current) return;
+    const r = langBtnRef.current.getBoundingClientRect();
+    const menuWidth = 220;
+    const left = Math.max(12, Math.min(r.right - menuWidth, window.innerWidth - menuWidth - 12));
+    const top = Math.min(r.bottom + 10, window.innerHeight - 260);
+    setMenuPos({ top, left, width: menuWidth });
+    setLangOpen(true);
+  };
+
+  const closeMenu = () => setLangOpen(false);
+
+  useEffect(() => {
+    if (!langOpen) return;
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+
+    const onClick = (e) => {
+      const btn = langBtnRef.current;
+      if (btn && btn.contains(e.target)) return;
+      closeMenu();
+    };
+
+    const onReposition = () => {
+      if (!langBtnRef.current) return;
+      const r = langBtnRef.current.getBoundingClientRect();
+      const menuWidth = 220;
+      const left = Math.max(12, Math.min(r.right - menuWidth, window.innerWidth - menuWidth - 12));
+      const top = Math.min(r.bottom + 10, window.innerHeight - 260);
+      setMenuPos({ top, left, width: menuWidth });
+    };
+
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    window.addEventListener('scroll', onReposition, true);
+    window.addEventListener('resize', onReposition);
+
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+      window.removeEventListener('scroll', onReposition, true);
+      window.removeEventListener('resize', onReposition);
+    };
+  }, [langOpen]);
+
+  const bottomLine = content?.about?.bottomLine || '';
+  const bottomAuthor = content?.about?.bottomAuthor || '';
+
   return (
     <>
-      {/* O PROJETO / BIOGRAFIA */}
+      {/* MENU FIXED */}
+      {langOpen && (
+        <div className="fixed inset-0 z-[9999]" aria-hidden="true">
+          <div
+            className="absolute rounded-lg border border-gray-700 bg-black/90 backdrop-blur-md overflow-hidden"
+            style={{ top: menuPos.top, left: menuPos.left, width: menuPos.width }}
+          >
+            {[
+              ['pt', 'Português (BR)'],
+              ['en', 'English'],
+              ['es', 'Español'],
+              ['fr', 'Français'],
+              ['de', 'Deutsch'],
+              ['it', 'Italiano'],
+              ['nl', 'Nederlands'],
+              ['ru', 'Русский'],
+              ['ja', '日本語'],
+              ['ko', '한국어'],
+              ['zh', '中文'],
+              ['ar', 'العربية'],
+              ['tr', 'Türkçe'],
+            ].map(([code, label]) => (
+              <button
+                key={code}
+                onClick={() => {
+                  setLanguage(code);
+                  closeMenu();
+                }}
+                className={`w-full text-left px-4 py-3 text-sm hover:bg-white/10 ${
+                  language === code ? 'text-white bg-white/10' : 'text-gray-200'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <motion.section
         id="about"
         ref={ref}
@@ -179,31 +275,31 @@ const About = ({ isMobile, language, setLanguage, content }) => {
         transition={{ duration: 1.5, delay: 0.2 }}
       >
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-stretch">
+          {/* FOTO */}
           <div className="md:w-2/5 flex-shrink-0">
             <div className="relative h-full min-h-[420px] bg-black rounded-lg overflow-hidden">
-              {/* FOTO INTEIRA */}
               <div className="absolute inset-0 bg-artist-photo bg-contain bg-top bg-no-repeat"></div>
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-red-900/40 pointer-events-none"></div>
               <div className="absolute inset-0 shadow-[inset_0_0px_50px_rgba(0,0,0,0.8)]"></div>
             </div>
           </div>
 
+          {/* BIOGRAFIA */}
           <motion.div
             className="md:w-3/5 relative p-8 border border-gray-800 rounded-2xl overflow-hidden flex flex-col"
             animate={
               !isMobile && isInView
                 ? {
                     boxShadow: [
-                      '0 0 15px 0px rgba(185, 28, 28, 0.2)',
-                      '0 0 30px 5px rgba(185, 28, 28, 0.4)',
-                      '0 0 15px 0px rgba(185, 28, 28, 0.2)',
+                      '0 0 15px rgba(185, 28, 28, 0.2)',
+                      '0 0 30px rgba(185, 28, 28, 0.4)',
+                      '0 0 15px rgba(185, 28, 28, 0.2)',
                     ],
                   }
-                : { boxShadow: '0 0 15px 0px rgba(185, 28, 28, 0.2)' }
+                : { boxShadow: '0 0 15px rgba(185, 28, 28, 0.2)' }
             }
             transition={{ duration: 2.2, repeat: isInView ? Infinity : 0, ease: 'easeInOut' }}
           >
-            {/* VIDEO DE FUNDO DO PROJETO (MANTIDO) */}
             <video
               autoPlay
               loop
@@ -215,25 +311,38 @@ const About = ({ isMobile, language, setLanguage, content }) => {
               <source src="/videos/abrir%20o%20peito.mp4" type="video/mp4" />
             </video>
 
-            <div className="absolute inset-0 bg-transparent rounded-2xl z-10"></div>
+            <div className="absolute inset-0 bg-black/55 backdrop-blur-[1px] z-10"></div>
 
             <div className="relative z-20 text-left flex flex-col flex-grow">
               <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-wider uppercase font-elegance">
                 {content.about.title} <WavingFlag />
               </h2>
 
-              {/* TEXTO DA BIO (MANTIDO) */}
               <div
-                className="space-y-6 font-bold text-red-200 text-base md:text-lg leading-relaxed flex-grow"
-                style={{ textShadow: '0 0 8px rgba(254, 202, 202, 0.5)' }}
+                className="space-y-6 font-bold text-red-100 text-base md:text-lg leading-relaxed flex-grow"
+                style={{ textShadow: '0 0 10px rgba(0,0,0,0.65)' }}
                 dangerouslySetInnerHTML={{
-                  __html: `
-                    <p>ARCH'ANGEL é o ritual sonoro do Artista e DJ brasileiro ,Ícaro Archanjo. Som experimental que aguça os sentidos sensoriais e os extra-sensoriais, despertando algo que só quem se permite, sente. uma experiência auditiva profunda , única e introspectiva. Caos organizado e dançante, que te leva nas profundezas de ti mesmo.</p>
-                    <p>Cada track é uma chave, cuidadosamente forjada para transmitir códigos subconscientes. É uma imersão hipnótica desenhada para guiar a mente através do "véu de Maya", promovendo uma profunda reconexão interna.</p>
-                    <p>Arch'Angel tem significado vivo. Sinta a mensagem pulsar dentro de ti.</p>
-                  `,
+                  __html: `${content.about.p1}<br/><br/>${content.about.p2}<br/><br/>${content.about.p3}`,
                 }}
               />
+
+              {(bottomLine || bottomAuthor) && (
+                <div className="mt-8 pt-6 border-t border-gray-700">
+                  {bottomLine && (
+                    <p className="text-gray-100 italic text-base md:text-lg">
+                      “{bottomLine}”
+                    </p>
+                  )}
+                  {bottomAuthor && (
+                    <p className="mt-2 text-sm text-gray-400 text-right">
+                      {bottomAuthor}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* ✅ ÂNCORA "presskit" exatamente abaixo da bio (na área do botão) */}
+              <div id="presskit" className="scroll-mt-24" />
 
               <div className="flex flex-wrap items-center gap-4 mt-10">
                 <motion.a
@@ -249,13 +358,14 @@ const About = ({ isMobile, language, setLanguage, content }) => {
                 </motion.a>
 
                 <motion.button
-                  onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-                  className="inline-flex items-center gap-x-2 px-4 py-3 text-xs font-semibold border border-gray-700 bg-black/30 text-gray-400 rounded-lg transition-all duration-300 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                  ref={langBtnRef}
+                  onClick={() => (langOpen ? closeMenu() : openMenu())}
+                  className="inline-flex items-center gap-x-2 px-4 py-3 text-xs font-semibold border border-gray-700 bg-black/30 text-gray-200 rounded-lg transition-all duration-300 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaGlobe className="text-lg" />
-                  <span>{language === 'pt' ? 'English' : 'Português'}</span>
+                  <span>{language === 'pt' ? 'Idioma' : 'Language'}</span>
                 </motion.button>
               </div>
             </div>
