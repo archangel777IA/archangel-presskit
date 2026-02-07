@@ -6,7 +6,6 @@ import About from './components/About';
 import Links from './components/Links';
 import Music from './components/Music';
 import Gallery from './components/Gallery';
-import Continuation from './components/Continuation';
 import Footer from './components/Footer';
 
 const useIsMobile = () => {
@@ -40,10 +39,52 @@ const AnimatedBackground = () => {
     { variants: { initial: { d: "M -100,1500 C 550,1350 650,1650 2020,1500" }, animate: { d: "M -100,1500 C 550,1650 650,1350 2020,1500" } }, delay: 18, duration: 29 },
     { variants: { initial: { d: "M -100,1650 C 450,1200 750,2100 2020,1650" }, animate: { d: "M -100,1650 C 450,2100 750,1200 2020,1650" } }, delay: 20, duration: 36 },
   ];
-  return ( <div className="fixed inset-0 z-0 overflow-hidden"><svg className="absolute w-full h-full" preserveAspectRatio="none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><defs><filter id="neon-glow"><feGaussianBlur stdDeviation="30" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs><g filter="url(#neon-glow)" opacity="0.8">{lines.map((line, index) => ( <motion.path key={index} variants={line.variants} initial="initial" animate="animate" transition={{ ...commonTransition, delay: line.delay, duration: line.duration || 25 }} stroke="#b91c1c" strokeWidth="4" fill="none" /> ))}</g></svg></div> );
+  return (
+    <div className="fixed inset-0 z-0 overflow-hidden">
+      <svg className="absolute w-full h-full" preserveAspectRatio="none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="neon-glow">
+            <feGaussianBlur stdDeviation="30" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <g filter="url(#neon-glow)" opacity="0.8">
+          {lines.map((line, index) => (
+            <motion.path
+              key={index}
+              variants={line.variants}
+              initial="initial"
+              animate="animate"
+              transition={{ ...commonTransition, delay: line.delay, duration: line.duration || 25 }}
+              stroke="#b91c1c"
+              strokeWidth="4"
+              fill="none"
+            />
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
 };
 
-const FloatingWhatsApp = () => ( <motion.a href="https://wa.me/5511997429410" target="_blank" rel="noopener noreferrer" className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 2, duration: 0.5, ease: "easeOut" }} whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(37, 211, 102, 0.8)" }} whileTap={{ scale: 0.9 }}><FaWhatsapp className="text-3xl sm:text-4xl" /></motion.a> );
+const FloatingWhatsApp = () => (
+  <motion.a
+    href="https://wa.me/5511997429410"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg"
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ delay: 2, duration: 0.5, ease: "easeOut" }}
+    whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(37, 211, 102, 0.8)" }}
+    whileTap={{ scale: 0.9 }}
+  >
+    <FaWhatsapp className="text-3xl sm:text-4xl" />
+  </motion.a>
+);
 
 const siteContent = {
   pt: {
@@ -57,7 +98,6 @@ const siteContent = {
     links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
     music: { title: "Ouça", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
     gallery: { title: "Galeria do Artista" },
-    continuation: { title: "Jornada e Propósito", p1: `Seguindo fielmente o caminho da expressão real através da MÚSICA, Arch'Angel vem conquistando seu espaço, com passos firmes, participando de projetos colaborativos como a Legatus coletivo, Square Garden festival, e entre outros.`, p2: `Além de dar aulas voluntárias de produção musical para amigos e conhecidos que também tem o sonho de expressar a sua luz através da musica.`, button: "Se você quer aprender produção musical do zero, clique aqui" },
     footer: { quote: `"A música tem o poder de unir, e portanto, de mudar toda uma nação que ainda vive na ilusão da separação"`, author: `- Ícaro Archanjo de Lima` }
   },
   en: {
@@ -71,7 +111,6 @@ const siteContent = {
     links: { title: "Open for Labels, Collabs and Bookings", follow: "Follow me" },
     music: { title: "Listen", soundcloud: "SoundCloud", spotify: "Spotify", bandcamp: "Bandcamp" },
     gallery: { title: "Artist Gallery" },
-    continuation: { title: "Journey and Purpose", p1: `Faithfully following the path of real expression through MUSIC, Arch'Angel has been conquering its space, with firm steps, participating in collaborative projects such as the Legatus collective, Square Garden festival, and others.`, p2: `In addition to giving volunteer music production classes to friends and acquaintances who also dream of expressing their light through music.`, button: "If you want to learn music production from scratch, click here" },
     footer: { quote: `"Music has the power to unite, and therefore, to change an entire nation that still lives in the illusion of separation"`, author: `- Ícaro Archanjo de Lima` }
   }
 };
@@ -86,16 +125,16 @@ function App() {
       <main className="relative z-10 flex flex-col items-center">
         <Hero />
         <div className="px-4 w-full">
-          <About 
-            isMobile={isMobile} 
-            language={language} 
-            setLanguage={setLanguage} 
-            content={siteContent[language]} 
+          <About
+            isMobile={isMobile}
+            language={language}
+            setLanguage={setLanguage}
+            content={siteContent[language]}
           />
           <Links content={siteContent[language].links} />
           <Music isMobile={isMobile} content={siteContent[language].music} />
           <Gallery isMobile={isMobile} content={siteContent[language].gallery} />
-          <Continuation isMobile={isMobile} content={siteContent[language].continuation} />
+          {/* REMOVIDO: Continuation (era a caixa de cima) */}
         </div>
         <Footer content={siteContent[language].footer} />
       </main>
